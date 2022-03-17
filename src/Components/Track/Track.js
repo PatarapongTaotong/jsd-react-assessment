@@ -3,15 +3,20 @@ import './Track.css';
 const Track = (props) => {
     const renderAction = (props) => {
         if (props.isRemoval) {
-            return <button className="Track-action">+-</button>;
+            return <button className="Track-action" onClick={removeTrack}>-</button>;
         } else {
             return <button className="Track-action" onClick={addTrack}>+</button>;
         }
     }
 
-    // Call for 'add track to playlist function'
+    // Call for 'add track to a playlist function'
     const addTrack = () => {
         props.onAdd(props.track);
+    }
+
+    // Call for 'remove track from a playlist function'
+    const removeTrack = () => {
+        props.onRemove(props.track);
     }
 
     return (

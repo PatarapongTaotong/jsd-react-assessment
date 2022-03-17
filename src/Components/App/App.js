@@ -9,7 +9,7 @@ const App = () => {
   const [playlistName, setPlaylistName] = useState('My Playlist');
   const [playlistTracks, setPlaylistTracks] = useState([{name: 'playlistName1', artist: 'playlistArtist1', album: 'playlistAlbum1', id: 3}, {name: 'playlistName2', artist: 'playlistArtist2', album: 'playlistAlbum2', id: 4}]);
 
-  // Add track to playlist function
+  // Add track to a playlist function
   const addTrack = (track) => {
     let tracks = playlistTracks;
     if (tracks.find(savedTrack => savedTrack.id === track.id)) {
@@ -19,14 +19,25 @@ const App = () => {
     setPlaylistTracks((prev) => [...prev, track]);
   }
 
+  // Remove track from a playlist function
+  const removeTrack = (track) => {
+    let tracks = playlistTracks;
+    tracks = tracks.filter(currentTrack => currentTrack.id !== track.id);
+
+    setPlaylistTracks(tracks);
+  }
+
   return (
     <div>
       <h1>Ja<span className="highlight">mmm</span>ing</h1>
       <div className="App">
         <SearchBar />
         <div className="App-playlist">
-          <SearchResults searchResults={searchResults} onAdd={addTrack} />
-          <Playlist playlistName={playlistName} playlistTracks={playlistTracks} />
+          <SearchResults searchResults={searchResults} 
+            onAdd={addTrack} />
+          <Playlist playlistName={playlistName} 
+            playlistTracks={playlistTracks} 
+            onRemove={removeTrack} />
         </div>
       </div>
     </div>
