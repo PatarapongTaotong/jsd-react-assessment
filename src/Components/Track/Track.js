@@ -5,8 +5,13 @@ const Track = (props) => {
         if (props.isRemoval) {
             return <button className="Track-action">+-</button>;
         } else {
-            return <button className="Track-action">+</button>;
+            return <button className="Track-action" onClick={addTrack}>+</button>;
         }
+    }
+
+    // Call for 'add track to playlist function'
+    const addTrack = () => {
+        props.onAdd(props.track);
     }
 
     return (
