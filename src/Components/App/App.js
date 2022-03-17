@@ -32,6 +32,11 @@ const App = () => {
     setPlaylistName(name);
   }
 
+  // Method that saves the playlist
+  const savePlaylist = () => {
+    const trackUris = playlistTracks.map(track => track.uri);
+  }
+
   return (
     <div>
       <h1>Ja<span className="highlight">mmm</span>ing</h1>
@@ -43,7 +48,8 @@ const App = () => {
           <Playlist playlistName={playlistName} 
             playlistTracks={playlistTracks} 
             onRemove={removeTrack}
-            onNameChange={updatePlaylistName} />
+            onNameChange={updatePlaylistName}
+            onSave={savePlaylist} />
         </div>
       </div>
     </div>
