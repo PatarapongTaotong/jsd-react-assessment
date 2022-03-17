@@ -3,6 +3,7 @@ import { useState } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import SearchResults from '../SearchResults/SearchResults';
 import Playlist from '../Playlist/Playlist';
+import Spotify from '../../util/Spotify';
 
 const App = () => {
   const [searchResults, setSearchResults] = useState([{name: 'name1', artist: 'artist1', album: 'album1', id: 1}, {name: 'name2', artist: 'artist2', album: 'album2', id: 2}]);
@@ -39,7 +40,9 @@ const App = () => {
 
   // Search function
   const search = (term) => {
-    console.log(term);
+    Spotify.search(term).then(searchResults => {
+      setSearchResults(searchResults)
+    })
   }
 
   return (
