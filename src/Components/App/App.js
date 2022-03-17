@@ -27,6 +27,11 @@ const App = () => {
     setPlaylistTracks(tracks);
   }
 
+  // Change the name of a playlist function
+  const updatePlaylistName = (name) => {
+    setPlaylistName(name);
+  }
+
   return (
     <div>
       <h1>Ja<span className="highlight">mmm</span>ing</h1>
@@ -37,7 +42,8 @@ const App = () => {
             onAdd={addTrack} />
           <Playlist playlistName={playlistName} 
             playlistTracks={playlistTracks} 
-            onRemove={removeTrack} />
+            onRemove={removeTrack}
+            onNameChange={updatePlaylistName} />
         </div>
       </div>
     </div>
